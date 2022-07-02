@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+
+{% block title %}CRUD | all students{% endblock title %}
+
+
+
+
+{% block heading %}
+<h3 class="display-4 text-center" ><b>UPDATE</b> Students Informations</h3>
+{% endblock heading %}
+
+{% block content %}
+<form action="" method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit" class="btn btn-info" >Update</button>
+    <a href="{% url 'allstudent'%}" class="btn btn-danger">Back To Home</a>
+</form>
+{% endblock content %}
