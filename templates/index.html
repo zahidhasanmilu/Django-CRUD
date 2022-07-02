@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+
+{% block title %}CRUD | all students{% endblock title %}
+
+
+
+
+{% block heading %}
+<h3 class="display-4 text-center" >All Students Informations</h3>
+{% endblock heading %}
+
+
+{% block content %}
+<table class="table table-bordered table-hover">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Name</th>
+      <th scope="col">Student ID</th>
+      <th scope="col">Department</th>
+      <th scope="col">Section</th>
+      <th scope="col">Semester</th>
+      <th scope="col">Phone</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+      {% for file in files %}
+    <tr>
+      <th scope="row">{{file.id}}</th> 
+      <td>{{file.name}}</td>
+      <td>{{file.student_id}}</td>            
+      <td>{{file.department}}</td>
+      <td>{{file.section}}</td>
+      <td>{{file.semester}}</td>
+      <td>{{file.phone}}</td>
+      <td>
+        <a href="{% url 'update' file.id %}" class="btn btn-info">Edit</a>
+        <form action=" {% url 'delete_student' file.id %}" class="d-inline" method="post">
+          {% csrf_token %}
+          <button type="submit" class="btn btn-danger">Delete</button>
+        </form>
+      </td>
+    </tr>
+
+
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock content %}
+
+
+
+
+{% block url %}
+<a href="{% url 'addstudent' %}" class="btn btn-primary">Add Student</a>
+{% endblock url %}
+     
