@@ -14,6 +14,8 @@ def allstudent(request):
             files = Student.objects.filter(name__icontains=file)
     return render(request, 'index.html', {'files':files})
 
+
+
 def addstudent(request):
     if request.method == 'POST':
         fm = StudentForm(request.POST)
