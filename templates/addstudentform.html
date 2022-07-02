@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block title %}CRUD | add students form{% endblock title %}
+
+{% block heading %}
+<h3 class="display-4 text-center">ADD Student Form</h3>
+{% endblock heading %}
+
+
+{% block content %}
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{forms}}
+        <br>
+        <button type="submit" class="btn btn-danger">Save</button>
+        <a href="{% url 'allstudent'%}" class="btn btn-info">Back To Home</a>
+    </form>                                
+
+{% endblock content %}
