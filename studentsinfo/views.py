@@ -1,5 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
+from django.contrib import messages
 
 import studentsinfo
 from .forms import StudentForm
@@ -21,6 +22,7 @@ def addstudent(request):
         fm = StudentForm(request.POST)
         if fm.is_valid():
             fm.save()
+            messages.success(request, 'Profile Created.')
             return redirect('/')
     else:
         fm =StudentForm()
@@ -33,6 +35,7 @@ def update(request,id):
         form = StudentForm(request.POST, instance=file)
         if form.is_valid():
             form.save()
+            messages.success(request, 'Profile Updated.')
             return redirect('/')
     else:
         form=StudentForm(instance=file)
@@ -43,5 +46,6 @@ def delete_student(request,id):
     if request.method =='POST':
         files = Student.objects.get(id=id)
         files.delete()
-        return HttpResponse('Delete Student')
+        messages.success(request, 'Profile Delete.')
+        return redirect('/')
     
