@@ -24,7 +24,7 @@
 <table class="table table-bordered table-hover">
   <thead class="thead-dark">
     <tr>
-      <th scope="col">ID</th>
+      <th scope="col">SN</th>
       <th scope="col">Name</th>
       <th scope="col">Student ID</th>
       <th scope="col">Department</th>
@@ -37,7 +37,7 @@
   <tbody>
       {% for file in files %}
     <tr>
-      <th scope="row">{{file.id}}</th> 
+      <th scope="row">{{forloop.counter}}</th> 
       <td>{{file.name}}</td>
       <td>{{file.student_id}}</td>            
       <td>{{file.department}}</td>
